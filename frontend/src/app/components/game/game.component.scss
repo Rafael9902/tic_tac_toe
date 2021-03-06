@@ -1,0 +1,25 @@
+.main-container{
+  .gameboard{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .player-one{ p{color: seagreen;} }
+    .player-two{ p{color: salmon;} }
+
+
+    .gamefield{
+      max-width: 300px;
+      .subfield{
+        cursor: pointer;
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        &.player-one{background: seagreen;}
+        &.player-two{background: salmon;}
+      }
+
+    }
+  }
+}

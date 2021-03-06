@@ -1,0 +1,65 @@
+<div class="main-container">
+  <h1 style="font-weight: 900; text-align: center; margin: 15px 0;">TIC TAC TOE</h1>
+
+  <div *ngIf="this.game.gameStatus === 0" class="field d-flex justify-content-center">
+    <button mat-raised-button color="accent" class="start-game-button" (click)="open(startGameModal)">Nueva Partida</button>
+  </div>
+
+  <div *ngIf="this.game.gameStatus === 2" class="field d-flex justify-content-center">
+    <button mat-raised-button color="accent" class="start-game-button" (click)="startGame()">Jugar De Nuevo</button>
+  </div>
+
+  <div class="gameboard" *ngIf="this.game.gameStatus !== 0">
+
+    <div class="players player-one align-self-center">
+      <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 0;">{{this.Game.player_1}}</p>
+    </div>
+
+    <div class="gamefield container-fluid">
+      <div class="row">
+        <div (click)="clickSubField($event)" position="0" class="subfield col-4"></div>
+        <div (click)="clickSubField($event)" position="1" class="subfield col-4"></div>
+        <div (click)="clickSubField($event)" position="2" class="subfield col-4"></div>
+      </div>
+      <div class="row">
+        <div (click)="clickSubField($event)" position="3" class="subfield col-4"></div>
+        <div (click)="clickSubField($event)" position="4" class="subfield col-4"></div>
+        <div (click)="clickSubField($event)" position="5" class="subfield col-4"></div>
+      </div>
+      <div class="row">
+        <div (click)="clickSubField($event)" position="6" class="subfield col-4"></div>
+        <div (click)="clickSubField($event)" position="7" class="subfield col-4"></div>
+        <div (click)="clickSubField($event)" position="8" class="subfield col-4"></div>
+      </div>
+    </div>
+
+    <div class="players player-two align-self-center">
+      <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 0;">Jugador 2</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal -->
+<ng-template #startGameModal let-modal>
+<div class="modal-header">
+  <!--<h4 class="modal-title">Hola {{player1}}</h4>-->
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="form-group row" >
+    <label for="player1" class="col-sm-2 col-form-label">Nombre:</label>
+    <div class="col-sm-10">
+      <input #player1 type="text" class="form-control" id="player1" value="Jugador 1" >
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" (click)="startGame(player1.value);modal.close()">Iniciar</button>
+  <button type="submit" class="btn btn-danger" (click)="modal.close()" >Cancelar</button>
+</div>
+</ng-template>
